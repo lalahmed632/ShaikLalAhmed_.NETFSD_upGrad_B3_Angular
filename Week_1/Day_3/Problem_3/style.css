@@ -1,0 +1,30 @@
+body {
+    background-color: #FF9B51;
+}
+h2 {
+    color: #25343F;
+    margin-bottom: 20px;
+}
+div{
+    padding: 70px;
+
+    width: 330px;
+    margin: 20px auto;
+}
+.feature-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.feature-list li {
+    background-color: #BFC9D1;
+    color: #25343F;
+    padding: 15px;
+    margin: 10px 0;
+    border: 2px solid #EAEFEF;
+    margin: 10px auto;
+}
+.feature-list li:hover {
+    background-color: #146bb1;
+}
+
