@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Web Page</title>
+
+</head>
+<style>
+     body{
+    background-color: #0AC4E0; 
+}
+p ul{
+    color: rgb(234, 8, 8);
+    font-size: 30px;
+    display: flex;
+    list-style:none;
+    gap: 35px;
+    text-decoration-line: underline;
+}
+h1{
+    color: rgb(129, 193, 65);
+    background-color: rgb(28, 94, 156);
+    font-size: 50px;
+}
+@media (max-width: 768px) {
+    body{
+        background-color: lightcoral;
+    }
+    p ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+} 
+
+</style>
+<body>
+    <header>
+        <h1 align="center"> Welcome to Delta Technologies</h1>
+    </header>
+    <hr/>
+    <p>
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Web dev Course</li>
+            <li>Cybersecurity Course</li>
+            <li>.NET Course</li>
+            <li>Java Course</li>
+            <li>Python Course</li>
+            <li>Contacts</li>
+        </ul>
+    </p>
+
+</body>
+</html>

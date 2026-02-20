@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Discount Calculator</title>
+
+    <style>
+        body{
+            text-align:center;
+            font-family: Arial;
+        }
+
+        h1{
+            color:blue;
+        }
+
+        h2{
+            color:rgb(236, 6, 33);
+        }
+
+        input{
+            padding:8px;
+            width:200px;
+            margin-top:20px;
+        }
+
+        button{
+            padding:8px 15px;
+            margin-top:10px;
+        }
+
+        #result{
+            text-align:center;
+            font-size:22px;
+            margin-top:20px;
+        }
+    </style>
+</head>
+
+<body>
+
+   <h1>Simple Discount Calculator</h1>
+   <hr/>
+   <h2>Enter Purchase Amount</h2>
+
+   <label>Amount:</label><br>
+   <input type="number" id="amount" placeholder="Enter amount"><br>
+   <button onclick="calculateDiscount()">Submit</button>
+
+   <p id="result"></p>
+
+   <script>
+
+        function calculateDiscount(){
+
+            let amount = Number(document.getElementById("amount").value);
+            let discount = 0;
+            let discountAmount = 0;
+            let finalAmount = 0;
+
+            if(amount >= 5000){
+                discount = 20;
+            }
+            else if(amount >= 3000){
+                discount = 10;
+            }
+            else{
+                discount = 0;
+            }
+
+            discountAmount = (amount * discount) / 100;
+            finalAmount = amount - discountAmount;
+
+            document.getElementById("result").innerHTML =
+            "Purchase Amount: " + amount + "<br>" +
+            "Discount Percentage: " + discount + "%<br>" +
+            "Discount Amount: " + discountAmount + "<br>" +
+            "Final Amount to be Paid: " + finalAmount;
+        }
+
+   </script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Traffic Signal Simulator</title>
+
+    <style>
+        body{
+            text-align:center;
+            font-family: Arial;
+        }
+
+        input{
+            padding:8px;
+            width:200px;
+            margin-top:20px;
+        }
+
+        button{
+            padding:8px 15px;
+            margin-top:10px;
+        }
+
+        #result{
+            margin-top:20px;
+            font-size:22px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Traffic Signal Simulator</h1>
+
+    <label>Signal Color:</label><br>
+    <input type="text" id="signal" placeholder="Enter red, yellow or green"><br>
+    <button onclick="checkSignal()">Submit</button>
+
+    <p id="result"></p>
+
+    <script>
+
+        function checkSignal(){
+
+            let signal = document.getElementById("signal").value;
+            let message = "";
+
+            switch(signal){
+
+                case "red":
+                    message = "Stop";
+                    break;
+
+                case "yellow":
+                    message = "Get Ready";
+                    break;
+
+                case "green":
+                    message = "Go";
+                    break;
+
+                default:
+                    message = "Invalid Signal Color";
+            }
+
+            document.getElementById("result").innerHTML =
+            "Instruction: " + message;
+        }
+
+    </script>
+
+</body>
+</html>

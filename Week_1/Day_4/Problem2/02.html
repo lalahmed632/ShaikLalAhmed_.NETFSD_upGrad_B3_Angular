@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grade Calculator</title>
+
+    <style>
+        body{
+            text-align:center;
+            font-family: Arial;
+        }
+
+        h1{
+            color:rgb(93, 6, 147);
+        }
+
+        input{
+            padding:8px;
+            width:200px;
+            margin-top:20px;
+        }
+
+        button{
+            padding:8px 15px;
+            margin-top:10px;
+        }
+
+        #result{
+            margin-top:20px;
+            font-size:22px;
+            color:rgb(187, 13, 13);
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Grade Calculator</h1>
+
+    <label>Marks:</label><br>
+    <input type="text" id="marks" placeholder="Enter your marks"><br>
+    <button onclick="checkGrade()">Submit</button>
+
+    <p id="result"></p>
+
+    <script>
+
+        function checkGrade(){
+
+            let marks = Number(document.getElementById("marks").value);
+            let grade = "";
+
+            if(marks >= 75){
+                grade = "Grade A";
+            }
+            else if(marks >= 60){
+                grade = "Grade B";
+            }
+            else if(marks >= 40){
+                grade = "Grade C";
+            }
+            else{
+                grade = "Fail";
+            }
+
+            document.getElementById("result").innerHTML =
+            "Your Grade: " + grade;
+        }
+
+    </script>
+
+</body>
+</html>
