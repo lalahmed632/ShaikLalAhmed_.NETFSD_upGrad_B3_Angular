@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Analysis</title>
+</head>
+<body>
+    <header style="color:rgb(6, 115, 174)" align="center">
+        <h1>Number Analysis</h1>
+    </header>
+    <hr/>
+    <section align="center"> 
+        <button id = id1 style="color:rgb(12, 8, 0)">Click Me</button>
+        <p id = id2>The Result will be showed here</p>
+    </section>
+    <script>
+        var num = 10;   
+        var but = document.querySelector("#id1");
+        var output = document.querySelector("#id2");
+
+            but.addEventListener("click", function(){
+
+                let res = "";
+
+                res += (num > 0 ?"Positive<br>" : "Negative<br>");
+             
+                for(let i=1; i<=num; i++){
+                if(i%2==0){
+                    res+= i+" " + "Even<br>";
+                 }
+                 else{
+                    res += i+" "+"Odd<br>";
+                  }
+                }
+                output.innerHTML = res;
+            })
+
+    </script>
+</body>
+</html>
