@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Info Display</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 40px;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        h1{
+            color: rgb(33, 21, 214);
+        }
+        html,body{
+            background-color:bisque;
+        }
+        button {
+            padding: 10px;
+            margin-top: 20px;
+        }
+        div{
+            font-size: x-large;
+            line-height: 1.5;
+            color:rgb(225, 12, 12);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>User Information</h1>
+    <hr>
+
+    <button id="btn">Display User Info</button>
+
+    <br> <br>
+
+    <div>
+    <p id="name"></p>
+    <p id="age"></p>
+    <p id="city"></p>
+    </div>
+
+    <script>
+
+        // Create object
+        var user = {
+            name: "Rahul",
+            age: 22,
+            city: "Delhi"
+        };
+
+        // Add event listener
+        var but = document.getElementById("btn")
+        but.addEventListener("click", function() {
+            displayUserInfo(user);
+        });
+
+        // creating function
+        function displayUserInfo(user) {
+
+        // Accessing properties
+        document.getElementById("name").innerText = "Name: " + user.name;
+        document.getElementById("age").innerText = "Age: " + user.age;
+        document.getElementById("city").innerText = "City: " + user.city;
+    }
+
+    </script>
+
+</body>
+</html>

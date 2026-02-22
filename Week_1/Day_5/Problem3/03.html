@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Counter App</title>
+    <style>
+        html,body {
+            text-align: center;
+            font-family: Arial;
+            margin-top: 50px;
+            background-color:bisque;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="counter">0</h1>
+
+    <button id="incBtn">Increment</button>
+    <button id="resetBtn">Reset</button>
+
+    <script>
+
+        // Global variable (outside function)
+        var counterValue = 0;
+
+        // Button references
+        var incButton = document.getElementById("incBtn");
+        var resetButton = document.getElementById("resetBtn");
+
+        // Increment button click
+        incButton.addEventListener("click", function() {
+            incrementCounter(1);   // passing step value
+        });
+
+        // Reset button click
+        resetButton.addEventListener("click", function() {
+            resetCounter();
+        });
+
+        // Function with parameter
+        function incrementCounter(step) {
+
+            counterValue = counterValue + step;   // updating global variable
+
+            // DOM update inside function
+            document.getElementById("counter").innerText = counterValue;
+        }
+
+        function resetCounter() {
+
+            counterValue = 0;   // reset global variable
+
+            // DOM update inside function
+            document.getElementById("counter").innerText = counterValue;
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeting Generator</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: antiquewhite;
+        }
+        button{
+            padding: 10px;
+            margin-top: 47px;
+            margin-left: 47%;
+        }
+        textarea{
+            padding: 10px;
+            margin-top: 47px;
+            margin-left: 41%;
+            padding: 50px;
+            background-color: rgb(41, 203, 244);
+            
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 align = center>Greeting Generator</h1>
+    </header>
+    <br>
+    <hr/>
+    <textarea id="id1" rows="4" cols="20"></textarea>
+    <section>
+       <button id = "id2">Greetings</button>
+    </section>
+
+    <script>
+       
+        var but = document.getElementById("id2");
+
+        but.addEventListener("click",function(){
+            
+            generateGreeting();
+
+        })
+        function generateGreeting(){
+
+            var msg = "Hello, Rahul! Welcome to our website.";
+
+             document.getElementById("id1").value = msg;
+        }
+
+    </script>
+</body>
+</html>
