@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+  <h2>Registration Form</h2>
+
+  Name: 
+  <input type="text" id="name" onchange="validateName()">
+  <span id="nameMsg"></span>
+  <br><br>
+
+  Email: 
+  <input type="text" id="email" onchange="validateEmail()">
+  <span id="emailMsg"></span>
+  <br><br>
+
+  Age: 
+  <input type="number" id="age" onchange="validateAge()">
+  <span id="ageMsg"></span>
+  <br><br>
+
+
+  <button onclick="submitForm()">Submit</button>
+
+  <script>
+
+    function validateName() {
+      let name = document.getElementById("name").value;
+      if (name === "") {
+        document.getElementById("nameMsg").innerHTML = "Name cannot be empty";
+        return false;
+      } else {
+        document.getElementById("nameMsg").innerHTML = " Valid";
+        return true;
+      }
+    }
+
+    function validateEmail() {
+      let email = document.getElementById("email").value;
+      if (email.includes("@")) {
+        document.getElementById("emailMsg").innerHTML = " Valid";
+        return true;
+      } else {
+        document.getElementById("emailMsg").innerHTML = "Email must contain @";
+        return false;
+      }
+    }
+
+    function validateAge() {
+      let age = document.getElementById("age").value;
+      if (age > 18) {
+        document.getElementById("ageMsg").innerHTML = " Valid";
+        return true;
+      } else {
+        document.getElementById("ageMsg").innerHTML = "Age must be greater than 18";
+        return false;
+      }
+    }
+
+    function submitForm() {
+
+      let validName = validateName();
+      let validEmail = validateEmail();
+      let validAge = validateAge();
+
+      if (validName && validEmail && validAge) {
+
+        sessionStorage.setItem("name", document.getElementById("name").value);
+        sessionStorage.setItem("email", document.getElementById("email").value);
+        sessionStorage.setItem("age", document.getElementById("age").value);
+
+        alert("Data Stored Successfully in Session Storage!");
+      } else {
+        alert("Please fix validation errors.");
+      }
+    }
+
+  </script>
+
+</body>
+</html>
