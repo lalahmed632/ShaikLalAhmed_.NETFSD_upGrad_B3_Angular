@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Location Logger</title>
+</head>
+<body>
+
+    <h2>Location-Based Weather Logger</h2>
+
+    <button onclick="getLocation()">Get My Location</button>
+
+    <p id="msg"></p>
+    <p>Latitude: <span id="lat"></span></p>
+    <p>Longitude: <span id="lon"></span></p>
+
+    <h3>Last 5 Locations</h3>
+    <ul id="history"></ul>
+
+    <script>
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(success, error);
+            } else {
+                document.getElementById("msg").innerHTML = "Geolocation not supported.";
+            }
+        }
+
+        function success(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
+            document.getElementById("lat").innerHTML = latitude;
+            document.getElementById("lon").innerHTML = longitude;
+            document.getElementById("msg").innerHTML = "Location fetched successfully.";
+
+            var newLocation = {
+                lat: latitude,
+                lon: longitude
+            };
+
+            var history = localStorage.getItem("locations");
+
+            if (history == null) {
+                history = [];
+            } else {
+                history = JSON.parse(history);
+            }
+
+            history.unshift(newLocation);
+
+            if (history.length > 5) {
+                history.pop();
+            }
+
+            localStorage.setItem("locations", JSON.stringify(history));
+
+            showHistory();
+        }
+
+        function error(err) {
+            if (err.code == 1) {
+                document.getElementById("msg").innerHTML = "Permission denied.";
+            } 
+            else if (err.code == 2) {
+                document.getElementById("msg").innerHTML = "Location unavailable.";
+            } 
+            else if (err.code == 3) {
+                document.getElementById("msg").innerHTML = "Request timeout.";
+            }
+        }
+
+        function showHistory() {
+            var list = document.getElementById("history");
+            list.innerHTML = "";
+
+            var history = localStorage.getItem("locations");
+
+            if (history != null) {
+                history = JSON.parse(history);
+
+                for (var i = 0; i < history.length; i++) {
+                    var li = document.createElement("li");
+                    li.innerHTML = "Lat: " + history[i].lat + " , Lon: " + history[i].lon;
+                    list.appendChild(li);
+                }
+            }
+        }
+
+        window.onload = showHistory;
+
+    </script>
+
+</body>
+</html>
