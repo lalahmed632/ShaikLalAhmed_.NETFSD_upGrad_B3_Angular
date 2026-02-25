@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Filter</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            padding: 40px;
+        }
+        select, button{
+            padding: 8px;
+            margin-right: 10px;
+        }
+        table{
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 70%;
+        }
+        th, td{
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: center;
+        }
+        th{
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Employee List</h2>
+
+    <select id="jobSelect">
+        <option value="All">All Employees</option>
+        <option value="Manager">Manager</option>
+        <option value="Salesman">Salesman</option>
+        <option value="Clerk">Clerk</option>
+    </select>
+
+    <button onclick="showEmployees()">Show Emps</button>
+
+    <div id="result"></div>
+
+    <script>
+        const employees = [
+            { id: 101, name: "John", job: "Manager", salary: 60000 },
+            { id: 102, name: "David", job: "Salesman", salary: 30000 },
+            { id: 103, name: "Smith", job: "Clerk", salary: 20000 },
+            { id: 104, name: "Sara", job: "Manager", salary: 65000 },
+            { id: 105, name: "Priya", job: "Salesman", salary: 32000 }
+        ];
+
+        const showEmployees = () => {
+
+            const selectedJob = document.getElementById("jobSelect").value;
+
+            const filteredEmployees = selectedJob === "All"
+                ? employees
+                : employees.filter(emp => emp.job === selectedJob);
+
+            let tableData = `
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Job</th>
+                        <th>Salary</th>
+                    </tr>
+            `;
+
+            filteredEmployees.forEach(emp => {
+                tableData += `
+                    <tr>
+                        <td>${emp.id}</td>
+                        <td>${emp.name}</td>
+                        <td>${emp.job}</td>
+                        <td>${emp.salary}</td>
+                    </tr>
+                `;
+            });
+
+            tableData += `</table>`;
+
+            document.getElementById("result").innerHTML = tableData;
+        };
+    </script>
+
+</body>
+</html>

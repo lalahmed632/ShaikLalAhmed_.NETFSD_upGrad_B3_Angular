@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marks Analyzer</title>
+    <style>
+        body{
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button{
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #output{
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Student Marks Analyzer</h2>
+    <button onclick="analyzeMarks()">Analyze Marks</button>
+
+    <div id="output"></div>
+
+    <script>
+        const marks = [17, 36, 66, 45, 98];
+
+        const calculateTotal = () =>
+            marks.reduce((total, mark) => total + mark, 0);
+
+        const calculateAverage = () =>
+            calculateTotal() / marks.length;
+
+        const analyzeMarks = () => {
+            const total = calculateTotal();
+            const average = calculateAverage();
+            const result = average >= 40 ? "Pass" : "Fail";
+
+            const formattedMarks = marks
+                .map(mark => `Mark: ${mark}`)
+                .join("<br>");
+
+            document.getElementById("output").innerHTML = `
+                ${formattedMarks} <br><br>
+                Total Marks: ${total} <br>
+                Average Marks: ${average.toFixed(2)} <br>
+                Result: ${result}
+            `;
+        };
+    </script>
+
+</body>
+</html>
