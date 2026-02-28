@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOPs Concepts</title>
+            <style>
+        input{
+            margin-left: 45%;
+        }
+        p{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center">Polymorphism</h1>
+    <hr/>
+    <p id = "id1"></p>
+    <input type="button" onclick="fn_buttonclick()" value="Get Data"></input>
+    <script>
+
+class Payment {
+    pay(amount) {
+        return "Processing payment...";
+    }
+}
+
+class CreditCardPayment extends Payment {
+    pay(amount) {
+        return `Paid ₹${amount} using Credit Card`;
+    }
+}
+
+class UPIPayment extends Payment {
+    pay(amount) {
+        return `Paid ₹${amount} using UPI`;
+    }
+}
+
+class CashPayment extends Payment {
+    pay(amount) {
+        return `Paid ₹${amount} in Cash`;
+    }
+}
+
+function fn_buttonclick(){
+
+    let p2 = new CashPayment();
+    let p1 = new UPIPayment();
+    let p3 = new CreditCardPayment();
+
+    let output = "";
+
+    output += p1.pay(500) + "<br><br>";
+    output += p2.pay(500) + "<br><br>";
+    output += p3.pay(500);
+
+    document.getElementById("id1").innerHTML = output;
+}
+
+</script>
+</body>
+</html>

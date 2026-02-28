@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOPs Concepts</title>
+        <style>
+        input{
+            margin-left: 45%;
+        }
+        p{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center"> Inheritance</h1>
+    <hr/>
+    <input type="button" onclick="fn_buttonclick()" value="Get Vehicle Data">
+    <p id="id1"></p>
+    <script>
+        class Vehicle{
+            brand = "";
+            speed = 0;
+
+            constructor(brand="",speed=0){
+                this.brand = brand;
+                this.speed = speed;
+            }
+            displayInfo(){
+                return `Vehicle Brand: ${this.brand} <br>, Vehicle Speed: ${this.speed}`;
+            }
+
+        }    
+        class Car extends Vehicle{
+
+            fueltype = "";
+
+            constructor(brand="",speed=0, fueltype=""){
+                super(brand,speed);
+                this.fueltype = fueltype;
+            }
+
+            showDetails(){
+                return this.displayInfo()+ `<br>Fuel Type: ${this.fueltype}`;
+            }
+        }
+
+        function fn_buttonclick(){
+
+            let car1 = new Car("Audi",200,"Petrol");
+            let car2 = new Car("BMW",250,"Diesel");
+
+            let out = "";
+
+            out += car1.showDetails() + "<br><br>";
+            out += car2.showDetails();
+
+            document.getElementById("id1").innerHTML = out;
+
+        }
+    </script>
+</body>
+</html>
