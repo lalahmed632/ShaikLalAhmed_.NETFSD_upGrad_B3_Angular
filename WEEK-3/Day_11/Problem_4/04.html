@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial;
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .container {
+            width: 350px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px;
+            margin-top: 5px;
+            background: #f2f2f2;
+            cursor: pointer;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        button {
+            margin-left: 5px;
+        }
+
+        .stats {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>To-Do List</h2>
+
+        <input type="text" id="taskInput">
+        <button id="addTask">Add</button>
+
+        <ul id="taskList"></ul>
+
+        <div class="stats">
+            <p>Total Tasks: <span id="totalCount">0</span></p>
+            <p>Completed Tasks: <span id="completedCount">0</span></p>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+            let total = 0
+            let completed = 0
+
+            $("#addTask").on("click", function () {
+                let task = $("#taskInput").val()
+
+                if (task !== "") {
+                    $("#taskList").append(
+                        "<li><span class='taskText'>" +
+                        task +
+                        "</span><button class='deleteBtn'>Delete</button></li>"
+                    )
+
+                    total++
+                    $("#totalCount").text(total)
+                    $("#taskInput").val("")
+                }
+            })
+
+            $("#taskList").on("click", ".taskText", function () {
+                $(this).toggleClass("completed")
+
+                if ($(this).attr("class") === "taskText completed") {
+                    completed++
+                } else {
+                    completed--
+                }
+
+                $("#completedCount").text(completed)
+            })
+
+            $("#taskList").on("click", ".deleteBtn", function () {
+                let parent = $(this).parent()
+
+                if (parent.find(".taskText").attr("class") === "taskText completed") {
+                    completed--
+                    $("#completedCount").text(completed)
+                }
+
+                parent.remove()
+                total--
+                $("#totalCount").text(total)
+            })
+
+        })
+    </script>
+
+</body>
+</html>
