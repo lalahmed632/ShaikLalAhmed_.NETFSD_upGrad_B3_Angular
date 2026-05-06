@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Theme Change Application</title>
+
+    <style>
+    body {
+        margin: 0;
+        padding: 40px;
+        font-family: Arial, sans-serif;
+        background-color: white;
+        color: black;
+        transition: 0.3s;
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    button {
+        padding: 10px 18px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #0077cc;
+        color: white;
+    }
+
+    button:hover {
+        opacity: 0.9;
+        background-color: purple;
+    }
+    .dark-theme {
+        background-color: #1e1e1e;
+        color: white;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Theme Toggle Application</h1>
+    <p>This blog supports Light and Dark Mode.</p>
+    <button id="themeToggleBtn">Switch Theme</button>
+</div>
+
+<script>
+    const toggleBtn = document.getElementById("themeToggleBtn");
+
+    const loadTheme = () => {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+            document.body.classList.add("dark-theme");
+        }
+    };
+
+    const toggleTheme = () => {
+        document.body.classList.toggle("dark-theme");
+
+        const isDark = document.body.classList.contains("dark-theme");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+    };
+
+    toggleBtn.addEventListener("click", toggleTheme);
+
+    loadTheme();
+</script>
+
+</body>
+</html>

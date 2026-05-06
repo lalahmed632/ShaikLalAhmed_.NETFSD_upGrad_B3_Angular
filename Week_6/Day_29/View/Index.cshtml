@@ -1,0 +1,42 @@
+﻿
+@using WebApplication1.Models
+@model List<Product>
+
+
+    <h2 class="mb-4">Product List</h2>
+    <hr />
+
+        <a class="btn btn-success mb-3" asp-action="Create">Create Product</a>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th style="width:200px;">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (Product p in Model)
+            {
+                <tr>
+                    <td>@p.ProductId</td>
+                    <td>@p.ProductName</td>
+                    <td>@p.Category</td>
+                    <td>₹ @p.Price</td>
+                    <td>
+                        <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@p.ProductId">View</a>
+
+                        <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@p.ProductId">Edit</a>
+
+                   <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@p.ProductId">Delete</a> 
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+

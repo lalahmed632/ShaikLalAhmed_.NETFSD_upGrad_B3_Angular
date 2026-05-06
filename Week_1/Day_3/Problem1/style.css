@@ -1,0 +1,29 @@
+h1{
+    color: rgb(62, 62, 194);
+    background-color: rgb(158, 218, 227);
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: rgb(3, 20, 151);
+    width: 100%;
+    height: 70px;
+    padding: 10px;
+    border: 5px solid rgb(8, 6, 119);
+    box-sizing: border-box;
+}
+label{
+    color: rgb(206, 39, 78);
+    font-size: 20px;
+
+}
+legend{
+    color: #960411ac;
+    font-size: 25px;
+    font-weight: bold;
+}
+fieldset{
+    background-color: rgb(158, 218, 227);
+    border: 5px solid rgb(8, 6, 119);
+    width: 400px;
+}

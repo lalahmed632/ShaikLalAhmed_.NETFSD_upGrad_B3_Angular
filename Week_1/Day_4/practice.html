@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body >
+    <h1>Login Page - using JavaScript</h1>
+    <hr/>
+
+    
+        <fieldset>
+            <legend>User Login</legend>
+        <label>User Name : </label>
+        <input  type="text"  id="t1"  name="uid" autofocus  placeholder="Enter user name" />
+        <br/><br/>
+        <label>Password : </label>
+        <input  type="password"  id="t2"  name="pwd"   placeholder="Enter password" />
+        <br/><br/>
+        <input type="button" onclick="loginButtonClick()" value="Login"  />  
+        
+        <p  id="p1"></p>
+    </fieldset>      
+  
+
+
+      <script> 
+        function  loginButtonClick(){
+
+            
+            let  txtObj1  =  document.getElementById("t1");
+            let  txtObj2  =  document.getElementById("t2");
+
+            let  paraObj  =  document.getElementById("p1");
+
+        //    alert(txtObj1); //  returns entire input object
+        //    alert(txtObj1.value); // returns the exact value in textbox
+
+            let uid =  txtObj1.value;
+            let pwd =  txtObj2.value;
+            
+            if(uid=="admin" && pwd=="admin123"){
+                paraObj.innerText = "Welcome to Admin";
+                paraObj.style.color = "White";
+                paraObj.style.backgroundColor = "Green";
+            }
+            else{
+                paraObj.innerText = "Invalid User Id or Password";
+                paraObj.style.color = "White";
+                paraObj.style.backgroundColor = "Red";
+            }
+        } 
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOPs Concepts</title>
+    <style>
+        input{
+            margin-left: 45%;
+        }
+        p{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center">Encapsulation</h1>
+    <hr/>
+    <input type="button" onclick="fn_buttonclick()" value="Get Student Data">
+    <p id =id1 ></p>
+    <script>
+        class Student{
+            #name ="";
+            #rollno=0;
+            #marks=0;
+        
+        constructor(name = "", rollno=0, marks = 0){
+            this.name = name;
+            this.rollno = rollno;
+            this.marks = marks;
+        }    
+        getDetails(){
+            return `Student Details - <br><br> Name: ${this.name}, rollno : ${this.rollno}, marks : ${this.marks}`;
+        }
+        getGrade(){
+            
+            if(this.marks >=90){
+                return "A";
+            }
+            else if(this.marks>=75){
+                return "B";
+            }
+            else if(this.marks>=50){
+                return "C";
+            }
+            else{
+                return "Fail";
+            }
+        }
+    }
+
+    function fn_buttonclick(){
+
+        let s1 = new Student("Lal",115,92);
+        let s2 = new Student("Ahmed",92,67);
+
+       let out = "";
+
+       out += s1.getDetails() + " |  Grade: " + s1.getGrade()+ "<br><br>";
+       out += s2.getDetails() + " |  Grade : "+ s2.getGrade();
+
+       document.getElementById("id1").innerHTML = out;
+    }
+
+    </script>
+</body>
+</html>

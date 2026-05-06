@@ -1,0 +1,37 @@
+h1{
+    color: rgb(32, 92, 145);
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    letter-spacing: 0.05cm;
+}
+h2{
+    color: rgba(72, 7, 152, 0.749);
+    font-size: 30px;
+    font-weight: normal;
+    text-decoration: underline;
+    letter-spacing: 0.05cm; 
+    margin: 20px;
+}
+.profile-description{
+    color: rgb(16, 1, 1);
+    font-size: 25px;
+    line-height: 1.5;
+    margin: 10px;
+    background-color: rgb(145, 211, 239);
+    padding: 15px;
+    border-left: 10px solid rgb(32, 92, 145);
+    border-radius: 10px;
+}
+footer{
+    color: rgb(184, 57, 125);
+    font-size: 20px;
+    line-height: 1.5;
+    text-align: justify;
+    margin: 20px;
+    background-color: rgb(244, 244, 55);
+    padding: 10px;
+    border-left: 10px solid rgb(223, 21, 85);
+    border-radius: 10px;
+    margin-top: 90px;
+}

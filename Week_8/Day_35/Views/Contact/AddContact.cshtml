@@ -1,0 +1,33 @@
+﻿@model WebApplication2.Models.ContactInfo
+@{
+    ViewData["Title"] = "Add Contact";
+}
+
+<h2>Add Contact</h2>
+
+<form asp-action="AddContact" method="post">
+
+    First Name: <input asp-for="FirstName" /><br />
+    Last Name: <input asp-for="LastName" /><br />
+    Email: <input asp-for="EmailId" /><br />
+    Mobile: <input asp-for="MobileNo" /><br />
+    Designation: <input asp-for="Designation" /><br />
+
+    Company:
+    <select asp-for="CompanyId">
+        @foreach (var c in ViewBag.Companies)
+        {
+            <option value="@c.CompanyId">@c.CompanyName</option>
+        }
+    </select><br />
+
+    Department:
+    <select asp-for="DepartmentId">
+        @foreach (var d in ViewBag.Departments)
+        {
+            <option value="@d.DepartmentId">@d.DepartmentName</option>
+        }
+    </select><br />
+
+    <button type="submit">Save</button>
+</form>

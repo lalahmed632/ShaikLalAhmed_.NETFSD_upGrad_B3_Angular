@@ -1,0 +1,32 @@
+@model IEnumerable<MyWebApplication3.Models.Movie>
+
+<h2>Movie List</h2>
+
+<a href="/Movies/Create">Add New Movie</a>
+
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Release Date</th>
+        <th>Price</th>
+        <th>Rating</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var m in Model)
+    {
+        <tr>
+            <td>@m.Title</td>
+            <td>@m.Genre</td>
+            <td>@m.ReleaseDate.ToShortDateString()</td>
+            <td>@m.Price</td>
+            <td>@m.Rating</td>
+            <td>
+                <a href="/Movies/Edit/@m.Id">Edit</a> |
+                <a href="/Movies/Delete/@m.Id">Delete</a> |
+                <a href="/Movies/Details/@m.Id">Details</a>
+            </td>
+        </tr>
+    }
+</table>

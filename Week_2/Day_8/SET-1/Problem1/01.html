@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Weather App</title>
+</head>
+<body>
+
+<h2>Simple Weather App</h2>
+
+<input type="text" id="cityInput" placeholder="Type city name">
+<button onclick="fetchWithPromise()">Using Promise</button>
+<button onclick="fetchWithAsync()">Using Async/Await</button>
+
+<pre id="resultBox"></pre>
+
+<script>
+const resultBox = document.getElementById("resultBox")
+
+const fetchLocation = (cityName) => {
+    return fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${cityName}`)
+        .then(response => response.json())
+        .then(info => {
+            if (!info.results || info.results.length === 0) {
+                throw new Error("City not found")
+            }
+            return info.results[0]
+        })
+}
+
+const fetchCurrentWeather = (latitude, longitude) => {
+    return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`)
+        .then(response => response.json())
+}
+
+const createWeatherText = (cityName, weatherData) => `
+City: ${cityName}
+Temperature: ${weatherData.temperature}°C
+Wind Speed: ${weatherData.windspeed} km/h
+Date & Time: ${weatherData.time}
+`
+
+const fetchWithPromise = () => {
+    const cityName = document.getElementById("cityInput").value.trim()
+    resultBox.textContent = "Loading..."
+
+    fetchLocation(cityName)
+        .then(location => {
+            return fetchCurrentWeather(location.latitude, location.longitude)
+                .then(weather => createWeatherText(location.name, weather.current_weather))
+        })
+        .then(text => resultBox.textContent = text)
+        .catch(error => resultBox.textContent = `Error: ${error.message}`)
+}
+
+const fetchWithAsync = async () => {
+    try {
+        const cityName = document.getElementById("cityInput").value.trim()
+        resultBox.textContent = "Loading..."
+
+        const location = await fetchLocation(cityName)
+        const weather = await fetchCurrentWeather(location.latitude, location.longitude)
+
+        resultBox.textContent = createWeatherText(location.name, weather.current_weather)
+
+    } catch (error) {
+        resultBox.textContent = `Error: ${error.message}`
+    }
+}
+</script>
+
+</body>
+</html>

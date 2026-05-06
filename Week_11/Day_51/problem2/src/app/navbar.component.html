@@ -1,0 +1,14 @@
+<nav class="navbar">
+  <span class="brand">📋 Contact Manager</span>
+  <div class="nav-links">
+    <a routerLink="/contacts" routerLinkActive="active">Contacts</a>
+    <a routerLink="/add-contact" routerLinkActive="active">Add Contact</a>
+  </div>
+  <div class="auth-section">
+    <span class="status" [class.logged-in]="authService.isAuthenticated()">
+      {{ authService.isAuthenticated() ? '🟢 Logged In' : '🔴 Logged Out' }}
+    </span>
+    <button *ngIf="!authService.isAuthenticated()" (click)="login()" class="btn-login">Login</button>
+    <button *ngIf="authService.isAuthenticated()" (click)="logout()" class="btn-logout">Logout</button>
+  </div>
+</nav>

@@ -1,0 +1,59 @@
+.container {
+    max-width: 500px;
+    margin: 30px auto;
+    font-family: Arial, sans-serif;
+    padding: 0 16px;
+}
+
+h2 {
+    color: #2c3e50;
+}
+
+.card {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 16px 0;
+}
+
+.card p {
+    margin: 8px 0;
+    font-size: 15px;
+}
+
+.btn-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-back {
+    padding: 8px 18px;
+    background: #2c3e50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-edit {
+    padding: 8px 18px;
+    background: #e67e22;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.alert.error {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 12px;
+}
+
+.loading {
+    color: #888;
+    margin: 20px 0;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Async Task App</title>
+</head>
+<body>
+
+<h2>Simple Task App</h2>
+
+<input type="text" id="taskField" placeholder="Type a task">
+<button id="addTaskBtn">Add</button>
+<button id="removeTaskBtn">Remove Last</button>
+<button id="showTaskBtn">Show Tasks</button>
+
+<pre id="display"></pre>
+
+<script type="module">
+let taskArray = []
+
+const display = document.getElementById("display")
+
+const fakeDatabase = (operation, value) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            try {
+                operation(value)
+                resolve([...taskArray])
+            } catch (error) {
+                reject(error)
+            }
+        }, 20)
+    })
+}
+
+const insertTask = text => {
+    if (!text.trim()) throw new Error("Task cannot be empty")
+    taskArray.push(text.trim())
+}
+
+const removeLastTask = () => {
+    if (taskArray.length === 0) throw new Error("No task to delete")
+    taskArray.pop()
+}
+
+const createListOutput = list => `
+Tasks:
+${list.length === 0 
+? "No tasks available" 
+: list.map((item, index) => `${index + 1}. ${item}`).join("\n")}
+`
+
+const handleAdd = async () => {
+    try {
+        const text = document.getElementById("taskField").value
+        await fakeDatabase(insertTask, text)
+        display.textContent = "Task successfully added"
+    } catch (error) {
+        display.textContent = `Error: ${error.message}`
+    }
+}
+
+const handleRemove = async () => {
+    try {
+        await fakeDatabase(removeLastTask)
+        display.textContent = "Last task removed"
+    } catch (error) {
+        display.textContent = `Error: ${error.message}`
+    }
+}
+
+const handleShow = async () => {
+    try {
+        const currentTasks = await fakeDatabase(() => {})
+        display.textContent = createListOutput(currentTasks)
+    } catch (error) {
+        display.textContent = `Error: ${error.message}`
+    }
+}
+
+document.getElementById("addTaskBtn").addEventListener("click", handleAdd)
+document.getElementById("removeTaskBtn").addEventListener("click", handleRemove)
+document.getElementById("showTaskBtn").addEventListener("click", handleShow)
+</script>
+
+</body>
+</html>

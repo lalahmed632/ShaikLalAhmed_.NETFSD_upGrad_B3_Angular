@@ -1,0 +1,13 @@
+@model MyWebApplication3.Models.Movie
+
+<h2>Add Movie</h2>
+
+<form method="post">
+    Title: <input asp-for="Title" /><br />
+    Genre: <input asp-for="Genre" /><br />
+    Release Date: <input asp-for="ReleaseDate" type="date" /><br />
+    Price: <input asp-for="Price" /><br />
+    Rating: <input asp-for="Rating" /><br />
+
+    <button type="submit">Save</button>
+</form>

@@ -1,0 +1,6 @@
+@ContactCategoryMicroservices_HostAddress = http://localhost:5173
+
+GET {{ContactCategoryMicroservices_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

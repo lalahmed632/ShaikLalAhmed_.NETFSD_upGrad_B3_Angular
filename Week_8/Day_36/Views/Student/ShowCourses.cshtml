@@ -1,0 +1,31 @@
+﻿@model IEnumerable<WebApplication3.Models.Courses>
+@{
+    ViewData["Title"] = "Courses";
+}
+
+<h2>All Courses with Enrolled Students</h2>
+
+<a asp-controller="Student" asp-action="ShowStudents">Back to Students</a>
+
+<table border="1">
+    <tr>
+        <th>Course Name</th>
+        <th>Enrolled Students</th>
+    </tr>
+    @foreach (var c in Model)
+    {
+        <tr>
+            <td>@c.CourseName</td>
+            <td>
+                @if (c.Students.Count == 0)
+                {
+                    <span>No students enrolled</span>
+                }
+                else
+                {
+                    @string.Join(", ", c.Students.Select(s => s.StudentName))
+                }
+            </td>
+        </tr>
+    }
+</table>

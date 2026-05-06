@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Enrollment</title>
+</head>
+<body>
+    <header>
+        <h1 align="center">Course Enrollment</h1>
+        <hr/>
+        <p>Welcome to the course enrollment page. Please select the courses you wish to enroll</p>
+        <fieldset>
+            <legend>Course Progress</legend>
+            <form>
+                <label for="email" align="center">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required />
+                <br><br>
+
+                <label for="course">Select Course:</label>
+                <datalist id="course">
+                    <option value="Web Development"></option>
+                    <option value="Data Science"></option>
+                    <option value="Machine Learning"></option>
+                    <option value="Cybersecurity"></option>
+                </datalist>
+                <input list="course" id="course" name="course" placeholder="Select a course" required />  
+                <br><br>  
+
+                <label for="experience">Years of Experience:</label><br />
+                <input type="number" id="experience" min="0"  max="20" placeholder="Enter experience" required>
+                <br><br>
+                <label for="skill">Skill Level:</label><br />
+                <input type="range" id="skill" min="1" max="10" value="5" />
+                 <br />
+                 Beginner
+                  <meter min="1" max="10" value="7"></meter>
+                Advanced
+                <br><br>
+                <label >Enrollment completion</label>
+                <progress value="70" max="100"></progress>
+            </form>
+    </header>
+</body>
+</html>

@@ -1,0 +1,21 @@
+﻿@using WebApplication1.Models;
+@model IEnumerable<Products>;
+
+<h1>Products List</h1>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Category</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.CategoryId</td>
+        </tr>
+    }
+</table>

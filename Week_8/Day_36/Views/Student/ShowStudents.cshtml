@@ -1,0 +1,24 @@
+﻿@model IEnumerable<WebApplication3.Models.Students>
+@{
+    ViewData["Title"] = "Students";
+}
+
+<h2>All Students with Course Details</h2>
+
+<a asp-controller="Student" asp-action="ShowCourses">View Courses & Enrolled Students</a>
+
+<table border="1">
+    <tr>
+        <th>Student ID</th>
+        <th>Student Name</th>
+        <th>Course Name</th>
+    </tr>
+    @foreach (var s in Model)
+    {
+        <tr>
+            <td>@s.StudentId</td>
+            <td>@s.StudentName</td>
+            <td>@s.CourseName</td>
+        </tr>
+    }
+</table>

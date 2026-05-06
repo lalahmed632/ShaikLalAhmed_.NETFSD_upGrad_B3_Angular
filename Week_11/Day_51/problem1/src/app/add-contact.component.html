@@ -1,0 +1,45 @@
+<div class="container">
+  <h2>Add New Contact</h2>
+
+  <div class="success" *ngIf="successMessage">{{ successMessage }}</div>
+
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="form">
+    <!-- Name -->
+    <div class="form-group">
+      <label>Name *</label>
+      <input type="text" formControlName="name" placeholder="Enter name" />
+      <span class="error" *ngIf="f['name'].touched && f['name'].errors?.['required']">
+        Name is required.
+      </span>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label>Email *</label>
+      <input type="email" formControlName="email" placeholder="Enter email" />
+      <span class="error" *ngIf="f['email'].touched && f['email'].errors?.['required']">
+        Email is required.
+      </span>
+      <span class="error" *ngIf="f['email'].touched && f['email'].errors?.['email']">
+        Enter a valid email address.
+      </span>
+    </div>
+
+    <!-- Phone -->
+    <div class="form-group">
+      <label>Phone *</label>
+      <input type="text" formControlName="phone" placeholder="Enter 10-digit phone" />
+      <span class="error" *ngIf="f['phone'].touched && f['phone'].errors?.['required']">
+        Phone is required.
+      </span>
+      <span class="error" *ngIf="f['phone'].touched && f['phone'].errors?.['minlength']">
+        Phone must be at least 10 digits.
+      </span>
+    </div>
+
+    <div class="btn-row">
+      <button type="submit" class="btn-submit" [disabled]="contactForm.invalid">Add Contact</button>
+      <a routerLink="/contacts" class="btn-cancel">Cancel</a>
+    </div>
+  </form>
+</div>

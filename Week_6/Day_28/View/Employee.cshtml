@@ -1,0 +1,25 @@
+﻿@using WebApplication1.Models;
+@model IEnumerable<Employee>;
+
+<h1>Employee List</h1>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>empno</th>
+        <th>ename</th>
+        <th>Job</th>
+        <th>Salary</th>
+        <th>Deptno</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Empno</td>
+            <td>@item.Ename</td>
+            <td>@item.Job</td>
+            <td>@item.Salary</td>
+            <td>@item.Deptno</td>
+        </tr>
+    }
+</table>

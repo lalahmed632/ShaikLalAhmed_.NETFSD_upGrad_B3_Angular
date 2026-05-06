@@ -1,0 +1,41 @@
+﻿@model Product
+
+    <div class="card shadow p-4">
+
+        <h3 class="mb-4">Edit Product</h3>
+        <hr />
+
+        <form asp-action="Edit">
+
+            <div class="mb-3">
+                <label class="form-label">Product Id</label>
+                <input asp-for="ProductId" class="form-control" readonly />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Product Name</label>
+                <input asp-for="ProductName" class="form-control" />
+                <span asp-validation-for="ProductName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Category</label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Price</label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+                <button class="btn btn-primary">Update</button>
+                <a class="btn btn-secondary" asp-action="Index">Cancel</a>
+
+        </form>
+    </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

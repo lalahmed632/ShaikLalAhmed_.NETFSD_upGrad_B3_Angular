@@ -1,0 +1,101 @@
+
+<html>
+
+<head></head>
+
+<body>
+	<h3>JavaScript Programming -- DOM Traversing </h3>
+	<hr />
+
+    <input type="button" value="By Id" onclick="fn_byId()" />
+	<input type="button" value="By TagName" onclick="fn_byTag()" />
+	<input type="button" value="By Class Name" onclick="fn_byClass()" />
+	<input type="button" value="By Query - Single" onclick="fn_byQuery()" />
+	<input type="button" value="By Query - Multiple" onclick="fn_byQueryAll()" />
+
+	<br /><br />
+
+	<div id="div1" style="border:2px solid blue; padding : 10px; margin:0px">
+		<p id="p1">This page demonstrate to access html elements using JavaScript. This page demonstrate to access html
+			elements using JavaScript. </p>
+		<p class="c1">This page demonstrate to access html elements using JavaScript. This page demonstrate to access
+			html elements using JavaScript. </p>
+		<p>This page demonstrate to access html elements using JavaScript. This page demonstrate to access html elements
+			using JavaScript. </p>
+		<p>This page demonstrate to access html elements using JavaScript. This page demonstrate to access html elements
+			using JavaScript. </p>
+		<p class="c1">This page demonstrate to access html elements using JavaScript. This page demonstrate to access
+			html elements using JavaScript. </p>
+		<p>This page demonstrate to access html elements using JavaScript. This page demonstrate to access html elements
+			using JavaScript. </p>
+		<p class="c1">This page demonstrate to access html elements using JavaScript. This page demonstrate to access
+			html elements using JavaScript. </p>
+
+	</div>
+
+	<hr />
+
+	<p>This page demonstrate to access html elements using JavaScript. This page demonstrate to access html elements
+		using JavaScript. </p>
+	<p class="c1">This page demonstrate to access html elements using JavaScript. This page demonstrate to access html
+		elements using JavaScript. </p>
+	<p>This page demonstrate to access html elements using JavaScript. This page demonstrate to access html elements
+		using JavaScript. </p>
+
+
+
+	<script>
+        function fn_byId(){
+            let paraObjArray = document.getElementById("p1");
+
+				paraObjArray.style.backgroundColor = "Yellow";
+
+        }
+		function fn_byTag() {
+			let paraObjArray = document.getElementsByTagName("p");
+
+			for (let paraObj of paraObjArray) {
+				paraObj.style.backgroundColor = "red";
+			}
+		}
+
+
+
+
+
+
+
+		function fn_byClass() {
+
+			let paraObjArray = document.getElementsByClassName("c1");
+
+			for (let paraObj of paraObjArray) {
+				paraObj.style.backgroundColor = "pink";
+			}
+
+			 
+
+		}
+
+
+
+
+
+
+		function fn_byQuery() {
+			var paraObj = document.querySelector("div p");
+			paraObj.style.backgroundColor = "Green";
+		}
+
+		function fn_byQueryAll() {
+			var paraObjArray = document.querySelectorAll("div p");
+
+			for (let i = 0; i < paraObjArray.length; i++) {
+				paraObjArray[i].style.backgroundColor = "Deeppink";
+			}
+		}
+
+	</script>
+</body>
+
+</html>

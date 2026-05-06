@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="loading" *ngIf="loading">Loading...</div>
+  <div class="alert error" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <ng-container *ngIf="contact && !loading">
+    <h2>Contact Details</h2>
+    <div class="card">
+      <p><strong>ID:</strong> {{ contact.id }}</p>
+      <p><strong>Name:</strong> {{ contact.name }}</p>
+      <p><strong>Email:</strong> {{ contact.email }}</p>
+      <p><strong>Phone:</strong> {{ contact.phone }}</p>
+    </div>
+    <div class="btn-row">
+      <button (click)="goBack()" class="btn-back">← Back</button>
+      <a [routerLink]="['/edit-contact', contact.id]" class="btn-edit">Edit</a>
+    </div>
+  </ng-container>
+</div>

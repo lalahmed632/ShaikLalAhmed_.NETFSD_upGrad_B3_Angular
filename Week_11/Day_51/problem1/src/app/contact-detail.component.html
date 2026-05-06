@@ -1,0 +1,15 @@
+<div class="container">
+  <ng-container *ngIf="contact; else notFound">
+    <h2>Contact Details</h2>
+    <div class="card">
+      <p><strong>ID:</strong> {{ contact.id }}</p>
+      <p><strong>Name:</strong> {{ contact.name }}</p>
+      <p><strong>Email:</strong> {{ contact.email }}</p>
+      <p><strong>Phone:</strong> {{ contact.phone }}</p>
+    </div>
+  </ng-container>
+  <ng-template #notFound>
+    <p class="not-found">Contact not found.</p>
+  </ng-template>
+  <button (click)="goBack()" class="back-btn">← Back to List</button>
+</div>

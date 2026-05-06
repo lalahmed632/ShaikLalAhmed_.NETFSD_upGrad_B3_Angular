@@ -1,0 +1,15 @@
+@model MyWebApplication3.Models.ContactInfo
+
+<h2>Add Contact</h2>
+
+<form method="post" action="/contact/add">
+    ID: <input type="number" name="ContactId" /><br />
+    First Name: <input type="text" name="FirstName" /><br />
+    Last Name: <input type="text" name="LastName" /><br />
+    Company: <input type="text" name="CompanyName" /><br />
+    Email: <input type="text" name="EmailId" /><br />
+    Mobile: <input type="number" name="MobileNo" /><br />
+    Designation: <input type="text" name="Designation" /><br />
+
+    <button type="submit">Add Contact</button>
+</form>

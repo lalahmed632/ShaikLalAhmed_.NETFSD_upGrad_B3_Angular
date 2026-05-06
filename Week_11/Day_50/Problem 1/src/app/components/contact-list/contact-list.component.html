@@ -1,0 +1,91 @@
+<div class="container">
+  <h1>Contact Management</h1>
+
+  <!-- Two-Way Binding: Search Box -->
+  <div class="search-bar">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      placeholder="Search by name or email..."
+      class="search-input"
+    />
+  </div>
+
+  <!-- ngIf: Empty state -->
+  <ng-container *ngIf="(contacts | searchFilter: searchTerm).length > 0; else noContacts">
+    <table class="contact-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ngFor + Slice Pipe + Search Filter -->
+        <tr
+          *ngFor="let contact of contacts | searchFilter: searchTerm | slice: 0 : displayCount"
+          [ngClass]="contact.isActive ? 'active-row' : 'inactive-row'"
+        >
+          <!-- Interpolation -->
+          <td>{{ contact.contactId }}</td>
+
+          <!-- TitleCase Pipe -->
+          <td>{{ contact.name | titlecase }}</td>
+
+          <!-- LowerCase Pipe -->
+          <td>{{ contact.email | lowercase }}</td>
+
+          <!-- Custom Phone Formatter Pipe -->
+          <td>{{ contact.phone | phoneFormatter }}</td>
+
+          <!-- ngIf + Custom Status Pipe + ngStyle -->
+          <td>
+            <span
+              *ngIf="contact.isActive; else inactiveLabel"
+              [ngStyle]="{ color: 'green', fontWeight: 'bold' }"
+              class="badge active-badge"
+            >
+              {{ contact.isActive | statusPipe }}
+            </span>
+            <ng-template #inactiveLabel>
+              <span
+                [ngStyle]="{ color: 'red', fontWeight: 'bold' }"
+                class="badge inactive-badge"
+              >
+                {{ contact.isActive | statusPipe }}
+              </span>
+            </ng-template>
+          </td>
+
+          <!-- Event Binding: Toggle Status -->
+          <td>
+            <button
+              class="toggle-btn"
+              [class.btn-deactivate]="contact.isActive"
+              [class.btn-activate]="!contact.isActive"
+              (click)="toggleStatus(contact)"
+            >
+              {{ contact.isActive ? 'Deactivate' : 'Activate' }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Show More / Show Less -->
+    <div class="show-more">
+      <button class="show-btn" (click)="toggleShowMore()">
+        {{ showAll ? 'Show Less ▲' : 'Show More ▼' }}
+      </button>
+    </div>
+  </ng-container>
+
+  <!-- Empty State -->
+  <ng-template #noContacts>
+    <p class="no-contacts">No Contacts Available</p>
+  </ng-template>
+</div>

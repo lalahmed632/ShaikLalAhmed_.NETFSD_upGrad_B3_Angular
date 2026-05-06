@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="#">College Events</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#eventModal">
+            Add Event
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <div class="row g-3" id="eventList">
+  </div>
+</div>
+
+<div class="modal fade" id="eventModal">
+  <div class="modal-dialog">
+    <div class="modal-content p-3">
+      <h5>Add Event</h5>
+      <form id="eventForm">
+        <input type="text" id="eventName" class="form-control mb-2" placeholder="Event Name" required>
+        <input type="date" id="eventDate" class="form-control mb-2" required>
+        <button class="btn btn-primary w-100">Save</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+document.getElementById("eventForm").addEventListener("submit", function(e) {
+  e.preventDefault(); 
+
+  let name = document.getElementById("eventName").value;
+  let date = document.getElementById("eventDate").value;
+
+  let card = `
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card p-3 shadow">
+        <h5>${name}</h5>
+        <p>Date: ${date}</p>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("eventList").innerHTML += card;
+
+  this.reset();
+
+  let modal = bootstrap.Modal.getInstance(document.getElementById('eventModal'));
+  modal.hide();
+});
+</script>
+
+</body>
+</html>

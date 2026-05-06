@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>Contact List</h2>
+  <ng-container *ngIf="contacts.length > 0; else empty">
+    <table class="table">
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Details</th></tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of contacts">
+          <td>{{ contact.id }}</td>
+          <td>{{ contact.name }}</td>
+          <td>{{ contact.email }}</td>
+          <td>{{ contact.phone }}</td>
+          <td><a [routerLink]="['/contact', contact.id]" class="view-link">View</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-template #empty><p class="empty">No contacts found.</p></ng-template>
+</div>

@@ -1,0 +1,27 @@
+@model List<MyWebApplication3.Models.Product>
+
+<form method="post" action="/product/add">
+    Name: <input type="text" name="Name" /><br />
+    Price: <input type="number" name="Price" /><br />
+    Quantity: <input type="number" name="Quantity" /><br />
+    <button type="submit">Add Product</button>
+</form>
+
+<h2>Product List</h2>
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+    </tr>
+
+    @foreach (var p in Model)
+    {
+        <tr>
+            <td>@p.Name</td>
+            <td>@p.Price</td>
+            <td>@p.Quantity</td>
+        </tr>
+    }
+</table>

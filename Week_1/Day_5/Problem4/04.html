@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Profile Manager</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        #profile {
+            border: 2px solid black;
+            padding: 20px;
+            width: 300px;
+            margin: 20px auto;
+            border-radius: 10px;
+            background-color: #f4f4f4;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Student Profile Manager</h1>
+
+    <div id="profile"></div>
+
+    <button id="showBtn">Show Profile</button>
+    <button id="updateBtn">Update Marks</button>
+
+    <script>
+
+        // Global Student Object
+        var student = {
+            name: "Rahul",
+            rollNo: 101,
+            marks: 85
+        };
+
+        // Show Profile Button
+        document.getElementById("showBtn").addEventListener("click", function() {
+            updateStudentProfile(student);
+        });
+
+        // Update Marks Button
+        document.getElementById("updateBtn").addEventListener("click", function() {
+            updateMarks(95);  // passing new marks
+        });
+
+        // Function to display student details
+        function updateStudentProfile(student) {
+
+            document.getElementById("profile").innerHTML =
+                "<h3>Student Details</h3>" +
+                "<p>Name: " + student.name + "</p>" +
+                "<p>Roll No: " + student.rollNo + "</p>" +
+                "<p>Marks: " + student.marks + "</p>";
+        }
+
+        // Function to update marks and refresh display
+        function updateMarks(newMarks) {
+
+            student.marks = newMarks;   // update global object
+
+            updateStudentProfile(student);  // refresh UI
+        }
+
+    </script>
+
+</body>
+</html>

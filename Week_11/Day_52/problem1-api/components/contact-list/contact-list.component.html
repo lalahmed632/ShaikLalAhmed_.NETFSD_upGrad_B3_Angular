@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="header-row">
+    <h2>Contact List</h2>
+    <a routerLink="/add-contact" class="btn-add">+ Add Contact</a>
+  </div>
+
+  <div class="alert success" *ngIf="successMessage">{{ successMessage }}</div>
+  <div class="alert error" *ngIf="errorMessage">{{ errorMessage }}</div>
+  <div class="loading" *ngIf="loading">Loading contacts...</div>
+
+  <ng-container *ngIf="!loading">
+    <table class="table" *ngIf="contacts.length > 0; else empty">
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Actions</th></tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of contacts">
+          <td>{{ contact.id }}</td>
+          <td>{{ contact.name }}</td>
+          <td>{{ contact.email }}</td>
+          <td>{{ contact.phone }}</td>
+          <td class="actions">
+            <a [routerLink]="['/contact', contact.id]" class="btn-view">View</a>
+            <a [routerLink]="['/edit-contact', contact.id]" class="btn-edit">Edit</a>
+            <button (click)="deleteContact(contact.id)" class="btn-delete">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #empty><p class="empty">No contacts found.</p></ng-template>
+  </ng-container>
+</div>

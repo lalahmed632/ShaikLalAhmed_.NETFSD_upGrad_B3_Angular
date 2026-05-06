@@ -1,0 +1,28 @@
+@model List<MyWebApplication3.Models.ContactInfo>
+
+<h2>All Contacts</h2>
+
+<a href="/contact/add">Add New Contact</a>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Company</th>
+        <th>Designation</th>
+    </tr>
+
+    @foreach (var c in Model)
+    {
+        <tr>
+            <td>@c.ContactId</td>
+            <td>@c.FirstName @c.LastName</td>
+            <td>@c.EmailId</td>
+            <td>@c.MobileNo</td>
+            <td>@c.CompanyName</td>
+            <td>@c.Designation</td>
+        </tr>
+    }
+</table>

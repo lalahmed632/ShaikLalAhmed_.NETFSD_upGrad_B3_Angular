@@ -1,0 +1,13 @@
+@model MyWebApplication3.Models.Feedback
+
+<form method="post" action="/feedback/submit">
+    Name: <input type="text" name="Name" /><br />
+    Comments: <textarea name="Comments"></textarea><br />
+    Rating: <input type="number" name="Rating" min="1" max="5" /><br />
+    <button type="submit">Submit</button>
+</form>
+
+@if (Model != null && Model.Message != null)
+{
+    <h3>@Model.Message</h3>
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+<button id="myBtn">Click Me</button>
+
+<script>
+    // Get the button element
+    const btn = document.getElementById("myBtn");
+
+    // Add a click event listener
+    btn.addEventListener("click", function() {
+        alert("Button clicked!");
+    });
+
+    // You can add multiple listeners to the same event
+    btn.addEventListener("click", function() {
+        console.log("Another click handler");
+    });
+</script>
+</body>
+</html>
